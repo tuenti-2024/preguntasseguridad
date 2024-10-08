@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Recuperación</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .form-container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .form-container input, .form-container select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .copy-btn {
+            background-color: green;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .center-text {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h3>Pregúntale al cliente lo siguiente:</h3>
+        <label>Número a recuperar:</label>
+        <input type="text" id="numero" value=" ">
+
+        <label>Correo asociado a la cuenta de APP:</label>
+        <input type="text" id="correo" value=" ">
+
+        <label>¿Cuál fue el Combo que compraste con más frecuencia en los últimos 3 meses?</label>
+        <select id="combo">
+            <option value="a) Combo $2">a) Combo $2</option>
+            <option value="b) Combo $4">b) Combo $4</option>
+            <option value="c) Combo $8">c) Combo $8</option>
+            <option value="d) Combo $10">d) Combo $10</option>
+            <option value="e) Combo $20">e) Combo $20</option>
+            <option value="f) Combo $25">f) Combo $25</option>
+            <option value="g) Ninguno">g) Ninguno</option>
+        </select>
+
+        <label>Número al que más llamas con frecuencia:</label>
+        <input type="text" id="numeroFrecuente" value=" ">
+
+        <button class="copy-btn" onclick="copiar()">Copiar</button>
+        
+        <p class="center-text">By JR</p>
+    </div>
+
+    <script>
+        function copiar() {
+            const numero = document.getElementById('numero').value;
+            const correo = document.getElementById('correo').value;
+            const combo = document.getElementById('combo').options[document.getElementById('combo').selectedIndex].text; // Copia el literal
+            const numeroFrecuente = document.getElementById('numeroFrecuente').value;
+
+            const texto = `Número: ${numero}\nCorreo: ${correo}\nCombo: ${combo}\nNúmero frecuente: ${numeroFrecuente}`;
+
+            navigator.clipboard.writeText(texto).then(() => {
+                alert("Datos copiados al portapapeles");
+            });
+        }
+    </script>
+</body>
+</html>
